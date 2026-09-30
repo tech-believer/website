@@ -14,12 +14,16 @@ cd website/local
 
 ```bash
 python3 -m http.server 4173
+
+py -m http.server 4173
 ```
 
 3. Open this address in the browser:
 
 ```text
 http://127.0.0.1:4173/
+
+http://127.0.0.1:4173/local/
 ```
 
 The page stays on the cloned computer locally. Stop the server with Ctrl+C.

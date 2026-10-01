@@ -21,14 +21,15 @@ body {
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* Top bar across the page. */
+/* Top bar uses the same width as the page below it. */
 .nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  max-width: 860px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 20px 24px;
+  /* 6vw means 6% of the screen width, so big screens get more side space. */
+  padding: 24px 6vw;
   border-bottom: 1px solid var(--line);
   font-family: Arial, sans-serif;
 }
@@ -49,11 +50,12 @@ body {
   font-size: 14px;
 }
 
-/* Text on the left, photo on the right. */
+/* Text on the left, photo pushed to the right edge. */
 .hero {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: space-between;
+  gap: 48px;
 }
 
 .hero-text {
@@ -62,8 +64,8 @@ body {
 
 /* Round photo frame. Same width and height make a perfect circle. */
 .photo {
-  width: 200px;
-  height: 200px;
+  width: 320px;
+  height: 320px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -83,11 +85,11 @@ body {
   object-fit: cover;
 }
 
-/* Keep the content in a readable column. */
+/* Wide on a computer, with space at the screen edges. */
 .page {
-  max-width: 860px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 56px 24px 72px;
+  padding: 96px 6vw 96px;
 }
 
 /* Row that holds the two buttons. */
@@ -126,7 +128,7 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 64px;
   font-weight: normal;
 }
 
@@ -137,17 +139,18 @@ h1 {
 }
 
 .intro {
+  max-width: 720px;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.7;
 }
 
 /* Place the three topics side by side on a wide screen. */
 .topics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 40px;
+  gap: 24px;
+  margin-top: 64px;
 }
 
 article {
@@ -179,6 +182,22 @@ article p {
   /* Smaller gaps so the top bar fits on a phone. */
   .nav-links {
     gap: 12px;
+  }
+
+  .nav,
+  .page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .page {
+    padding-top: 48px;
+  }
+
+  /* Smaller photo so it fits a phone screen. */
+  .photo {
+    width: 200px;
+    height: 200px;
   }
 
   /* On a phone, put the photo under the text. */

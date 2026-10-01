@@ -62,7 +62,7 @@ body::after {
   z-index: 1;
   margin: 0 auto;
   /* 40px keeps a small edge, so the drawing fills the laptop. */
-  padding: 0 40px;
+  padding: 0 24px;
 }
 
 .roof-art {
@@ -1020,7 +1020,7 @@ body::after {
   justify-content: flex-end;
   align-items: center;
   margin: 0 auto;
-  padding: 24px 40px;
+  padding: 24px 24px;
   border-bottom: 1px solid var(--line);
   font-family: Arial, sans-serif;
 }
@@ -1041,18 +1041,20 @@ body::after {
   font-size: 14px;
 }
 
-/* Text on the left, photo pushed to the right edge. */
+/* Text and photo stay together in one centred row. */
 .hero {
   display: flex;
   align-items: center;
+  /* Text starts at the left edge of the cards, photo ends at their right edge. */
   justify-content: space-between;
-  gap: 48px;
+  /* Gap grows with the screen: at least 32px, at most 80px. */
+  gap: clamp(32px, 4vw, 80px);
   min-height: 510px;
 }
 
 .hero-text {
   flex: 1;
-  min-width: 0; /* lets the text wrap instead of pushing the photo off screen */
+  min-width: 0; /* text uses the space beside the photo, so line count follows the screen */
 }
 
 .eyebrow {
@@ -1176,7 +1178,7 @@ body::after {
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  padding: 40px 40px 96px;
+  padding: 40px 24px 96px;
 }
 
 /* Row that holds the two buttons. */
@@ -1257,7 +1259,6 @@ h1 {
 }
 
 .intro {
-  max-width: 720px;
   color: var(--muted);
   font-size: 20px;
   line-height: 1.7;

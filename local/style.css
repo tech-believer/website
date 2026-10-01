@@ -1,11 +1,14 @@
 /* Warm engineering colours for the first local page. */
 :root {
-  --ink: #221a0f;
-  --panel: #362712;
-  --line: #5c4630;
+  --ink: #11141d;
+  --panel: #282235;
+  --line: rgba(246, 239, 228, 0.16);
   --cream: #f6efe4;
-  --muted: #cbbba6;
+  --muted: #d5c8ba;
   --gold: #e0a84a;
+  --teal: #55d6c2;
+  --coral: #ff7b72;
+  --violet: #a98bff;
 }
 
 /* Make the page fill the window and use our font. */
@@ -16,6 +19,8 @@
 body {
   margin: 0;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
   background: var(--ink);
   color: var(--cream);
   font-family: Georgia, "Times New Roman", serif;
@@ -28,11 +33,91 @@ body::before {
   inset: -20%;              /* a bit bigger than the screen, so movement has room */
   z-index: -1;              /* sits behind all the text */
   background:
-    radial-gradient(circle at 20% 25%, rgba(224, 168, 74, 0.28), transparent 35%),  /* gold */
-    radial-gradient(circle at 80% 20%, rgba(64, 160, 170, 0.25), transparent 35%),  /* teal */
-    radial-gradient(circle at 65% 80%, rgba(170, 90, 140, 0.22), transparent 40%),  /* rose */
-    radial-gradient(circle at 15% 85%, rgba(90, 110, 200, 0.20), transparent 35%);  /* blue */
+    radial-gradient(circle at 20% 25%, rgba(224, 168, 74, 0.32), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(85, 214, 194, 0.28), transparent 32%),
+    radial-gradient(circle at 65% 80%, rgba(255, 123, 114, 0.24), transparent 38%),
+    radial-gradient(circle at 15% 85%, rgba(169, 139, 255, 0.22), transparent 35%);
   animation: drift 10s ease-in-out infinite alternate;
+}
+
+/* A faint technical grid gives the background an engineering feel. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(85, 214, 194, 0.24) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(85, 214, 194, 0.24) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+/* Three animated paths suggest electrical signals moving through a system. */
+.signal-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.signal {
+  position: absolute;
+  width: 42vw;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  box-shadow: 0 0 14px var(--teal);
+  animation: signal-flow 7s linear infinite;
+}
+
+.signal::after {
+  content: "";
+  position: absolute;
+  right: 20%;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cream);
+  box-shadow: 0 0 18px 5px var(--teal);
+}
+
+.signal-one {
+  top: 18%;
+  left: -45vw;
+}
+
+.signal-two {
+  top: 68%;
+  left: -50vw;
+  animation-delay: 2.3s;
+  animation-duration: 9s;
+}
+
+.signal-three {
+  top: 44%;
+  left: -45vw;
+  transform: rotate(-12deg);
+  animation-delay: 4.4s;
+  animation-duration: 11s;
+}
+
+@keyframes signal-flow {
+  0% {
+    opacity: 0;
+    translate: 0;
+  }
+  15%,
+  80% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    translate: 155vw;
+  }
 }
 
 /* Move and turn the glows, then go back (alternate). */
@@ -83,6 +168,9 @@ body::before {
 /* No movement for people who turned off animations on their device. */
 @media (prefers-reduced-motion: reduce) {
   body::before,
+  .signal,
+  .orbit,
+  .cursor,
   .hero-text,
   .topics article {
     animation: none;
@@ -91,6 +179,8 @@ body::before {
 
 /* Top bar uses the same width as the page below it. */
 .nav {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -99,6 +189,8 @@ body::before {
   /* 6vw means 6% of the screen width, so big screens get more side space. */
   padding: 24px 6vw;
   border-bottom: 1px solid var(--line);
+  background: rgba(17, 20, 29, 0.35);
+  backdrop-filter: blur(14px);
   font-family: Arial, sans-serif;
 }
 
@@ -124,24 +216,116 @@ body::before {
   align-items: center;
   justify-content: space-between;
   gap: 48px;
+  min-height: 510px;
 }
 
 .hero-text {
   flex: 1;
 }
 
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--teal);
+  font: 700 12px/1.4 Arial, sans-serif;
+  letter-spacing: 0.2em;
+}
+
+/* The two rings turn in opposite directions around the portrait. */
+.portrait-system {
+  position: relative;
+  width: 390px;
+  height: 390px;
+  flex: 0 0 390px;
+  display: grid;
+  place-items: center;
+}
+
+.orbit {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(85, 214, 194, 0.48);
+  border-radius: 50%;
+  animation: orbit-spin 14s linear infinite;
+}
+
+.orbit::before {
+  content: "";
+  position: absolute;
+  top: 16%;
+  right: 6%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 18px 5px rgba(85, 214, 194, 0.65);
+}
+
+.orbit-two {
+  inset: 0;
+  border-color: rgba(255, 123, 114, 0.38);
+  border-style: dashed;
+  animation-direction: reverse;
+  animation-duration: 22s;
+}
+
+.orbit-two::before {
+  top: auto;
+  right: auto;
+  bottom: 8%;
+  left: 20%;
+  background: var(--coral);
+  box-shadow: 0 0 18px 5px rgba(255, 123, 114, 0.55);
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-label {
+  position: absolute;
+  z-index: 2;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(17, 20, 29, 0.78);
+  color: var(--cream);
+  font: 10px Arial, sans-serif;
+  letter-spacing: 0.15em;
+}
+
+.label-code {
+  top: 3px;
+  left: 25%;
+}
+
+.label-control {
+  top: 47%;
+  right: -25px;
+}
+
+.label-hardware {
+  bottom: 10px;
+  left: 8%;
+}
+
 /* Round photo frame. Same width and height make a perfect circle. */
 .photo {
-  width: 320px;
-  height: 320px;
-  flex-shrink: 0;
+  width: 285px;
+  height: 285px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   overflow: hidden;
   /* Gold-to-teal fill until a real photo is added. */
-  background: linear-gradient(135deg, rgba(224, 168, 74, 0.35), rgba(64, 160, 170, 0.35));
+  background:
+    linear-gradient(135deg, rgba(224, 168, 74, 0.5), rgba(85, 214, 194, 0.4)),
+    var(--panel);
+  box-shadow:
+    0 0 60px rgba(85, 214, 194, 0.16),
+    inset 0 0 50px rgba(255, 255, 255, 0.05);
   color: var(--muted);
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -156,6 +340,8 @@ body::before {
 
 /* Wide on a computer, with space at the screen edges. */
 .page {
+  position: relative;
+  z-index: 1;
   max-width: 1440px;
   margin: 0 auto;
   padding: 96px 6vw 96px;
@@ -178,10 +364,14 @@ body::before {
   font-family: Arial, sans-serif;
   font-size: 14px;
   text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
 .button:hover {
   background: var(--panel);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(224, 168, 74, 0.2);
 }
 
 /* The main button is filled with gold. */
@@ -199,12 +389,39 @@ h1 {
   margin: 0;
   font-size: 64px;
   font-weight: normal;
+  background: linear-gradient(90deg, var(--cream), #ffd891, var(--teal));
+  background-clip: text;
+  color: transparent;
 }
 
 .role {
-  margin: 8px 0 0;
-  color: var(--gold);
+  min-height: 28px;
+  margin: 12px 0 0;
+  color: var(--muted);
   font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+#changing-focus {
+  display: inline-block;
+  color: var(--gold);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+#changing-focus.is-changing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.cursor {
+  color: var(--teal);
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .intro {
@@ -224,11 +441,35 @@ h1 {
 
 /* See-through cards so the colours show behind them. */
 article {
-  background: rgba(54, 39, 18, 0.55);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(54, 39, 18, 0.58), rgba(40, 34, 53, 0.58));
   backdrop-filter: blur(8px);
   border-top: 2px solid var(--gold);
   padding: 16px;
   transition: transform 0.25s, box-shadow 0.25s; /* smooth hover change */
+}
+
+/* Each card gets a different coloured light. */
+article::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -55px;
+  bottom: -70px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.14;
+  filter: blur(14px);
+}
+
+article:nth-child(2)::after {
+  background: var(--teal);
+}
+
+article:nth-child(3)::after {
+  background: var(--violet);
 }
 
 /* Card lifts up with a gold glow when the mouse is over it. */
@@ -274,8 +515,19 @@ article p {
 
   /* Smaller photo so it fits a phone screen. */
   .photo {
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 210px;
+  }
+
+  .portrait-system {
+    width: 280px;
+    height: 280px;
+    flex-basis: 280px;
+    align-self: center;
+  }
+
+  .label-control {
+    right: -8px;
   }
 
   /* On a phone, put the photo under the text. */

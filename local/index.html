@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Decorative moving signal lines. Screen readers ignore them. -->
+    <div class="signal-field" aria-hidden="true">
+      <span class="signal signal-one"></span>
+      <span class="signal signal-two"></span>
+      <span class="signal signal-three"></span>
+    </div>
+
     <!-- Top bar: the page links. The name is the heading below. -->
     <header class="nav">
       <nav class="nav-links">
@@ -24,8 +31,13 @@
       <!-- id="home" is the target of the Home link in the top bar. -->
       <section class="hero" id="home">
         <div class="hero-text">
+          <p class="eyebrow">ELECTRICAL ROOTS · SOFTWARE MIND · REAL HARDWARE</p>
           <h1>Aishwarya Mohan</h1>
-          <p class="role">Embedded Software &amp; Control Systems Engineer</p>
+          <!-- JavaScript changes only the highlighted ending. -->
+          <p class="role">
+            I build where
+            <span id="changing-focus">code meets hardware</span><span class="cursor">_</span>
+          </p>
 
           <!-- EDIT: background, the work in Germany, and the focus. -->
           <p class="intro">
@@ -44,10 +56,17 @@
           </div>
         </div>
 
-        <!-- Photo sits to the right of the text. -->
+        <!-- The animated rings connect the themes around the photo. -->
         <!-- When you have a picture, save it as local/photo.jpg -->
         <!-- and replace the line below with: <img src="photo.jpg" alt="Aishwarya Mohan"> -->
-        <div class="photo">Your photo</div>
+        <div class="portrait-system">
+          <span class="orbit orbit-one" aria-hidden="true"></span>
+          <span class="orbit orbit-two" aria-hidden="true"></span>
+          <span class="orbit-label label-code">CODE</span>
+          <span class="orbit-label label-control">CONTROL</span>
+          <span class="orbit-label label-hardware">HARDWARE</span>
+          <div class="photo">Your photo</div>
+        </div>
       </section>
 
       <!-- Three starting topics. More sections can be added later. -->
@@ -66,5 +85,7 @@
         </article>
       </section>
     </main>
+    <!-- A tiny script changes the highlighted engineering theme. -->
+    <script src="script.js"></script>
   </body>
 </html>

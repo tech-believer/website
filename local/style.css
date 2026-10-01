@@ -1311,6 +1311,27 @@ h1 {
   color: var(--gold);
 }
 
+/* One blog post. Copy the block in blog.html to add another. */
+.post {
+  max-width: 680px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.post-date {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+.post p {
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
 .intro {
   color: var(--muted);
   font-size: 20px;

@@ -9,26 +9,48 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Top bar: the page links. The name is the heading below. -->
+    <header class="nav">
+      <nav class="nav-links">
+        <!-- Each link jumps to a section with the same id. -->
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
     <main class="page">
-      <!-- Short introduction. Text can be replaced from the résumé later. -->
-      <p class="eyebrow">Embedded software · Control systems</p>
-      <h1>Aishwarya Mohan</h1>
-      <p class="role">Early-career engineer</p>
-      <p class="intro">
-        I am a Master’s student working on embedded software and control
-        systems. I am interested in taking an idea from a model to tested code
-        on real hardware.
-      </p>
+      <!-- Hero: the first thing a visitor reads. -->
+      <section class="hero">
+        <h1>Aishwarya Mohan</h1>
+        <p class="role">Embedded Software &amp; Control Systems Engineer</p>
+
+        <!-- EDIT: background, the work in Germany, and the focus. -->
+        <p class="intro">
+          I love the moment when code I wrote makes real hardware move. I
+          started in electrical and electronics engineering and 
+          worked in software automation and testing at an IT gaint,
+          and my student work at Bosch, Panasonic, and Neura Robotics showed me where I
+          belong: embedded development and control, from a model-based design
+          to code running on the board.
+        </p>
+
+        <!-- Two buttons. A link styled to look like a button. -->
+        <div class="hero-buttons">
+          <a class="button button-main" href="#projects">Explore projects</a>
+          <a class="button" href="https://github.com/tech-believer">GitHub</a>
+        </div>
+      </section>
 
       <!-- Three starting topics. More sections can be added later. -->
       <section class="topics" aria-label="Focus areas">
         <article>
           <h2>Master’s studies</h2>
-          <p>Control engineering, modelling, and embedded development.</p>
+          <p>Control engineering, Model based designing, Embedded development and Power engineering.</p>
         </article>
         <article>
           <h2>Software</h2>
-          <p>C, C++, and Python for firmware and system integration.</p>
+          <p>C, C++, and Python for firmware development, testing and system integration.</p>
         </article>
         <article>
           <h2>Hardware</h2>

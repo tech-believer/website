@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Contact page. The form is a template. It does not send mail yet. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Short text that search engines and link previews can show. -->
+    <meta
+      name="description"
+      content="Contact Aishwarya Mohan for conversations around embedded systems, control, machine learning, AI technologies, and engineering projects."
+    />
+    <title>Contact · Aishwarya Mohan</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a class="nav-here" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <h1>Contact</h1>
+      <p class="intro">A short note is enough. I read every message.</p>
+
+      <!-- Each field has a label so the visitor knows what to type. -->
+      <form class="contact-form" action="https://formspree.io/f/xjykdjbe" method="post">
+        <label>
+          Name
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5"></textarea>
+        </label>
+        <!-- Formspree sends this message to my email. -->
+        <button class="button button-main" type="submit">Send</button>
+      </form>
+
+      <!-- Where to find me sits under the form, not next to it. -->
+      <p class="find-me">
+        Find me on
+        <a href="https://github.com/tech-believer">GitHub</a>
+        ·
+        <a href="https://www.linkedin.com/in/aishwarya-mohan-482412249">LinkedIn</a>
+      </p>
+    </main>
+  </body>
+</html>

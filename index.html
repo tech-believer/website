@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!-- This file is the page the browser shows. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Short text that search engines and link previews can show. -->
+    <meta
+      name="description"
+      content="Personal website of Aishwarya Mohan, focused on embedded systems, control, machine learning, AI technologies, and real hardware."
+    />
+    <title>Aishwarya Mohan</title>
+    <!-- style.css holds the colours and layout. -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Top bar: the page links. The name is the heading below. -->
+    <header class="nav">
+      <nav class="nav-links">
+        <!-- Home stays on this file. The others open their own pages. -->
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Roof: ONE line that tells my story, left to right.            -->
+    <!-- Bengaluru -> electrical roots -> first code -> travel ->        -->
+    <!-- Darmstadt -> hikes -> firmware -> robots -> control -> next?   -->
+    <!-- A spark runs along the line and draws it, then it starts again. -->
+    <div class="roof" aria-hidden="true">
+      <svg viewBox="-200 0 1600 180" class="roof-art">
+        <defs>
+          <!-- The line slowly changes colour along the journey. -->
+          <linearGradient id="life-gradient" gradientUnits="userSpaceOnUse" x1="-200" y1="0" x2="1400" y2="0">
+            <stop offset="0" stop-color="#e0a84a" />
+            <stop offset="0.3" stop-color="#f3a6c6" />
+            <stop offset="0.55" stop-color="#55d6c2" />
+            <stop offset="0.8" stop-color="#a98bff" />
+            <stop offset="1" stop-color="#e0a84a" />
+          </linearGradient>
+          <!-- One sparkle shape, reused below. -->
+          <path id="star" d="M0 -4 L1 -1 L4 0 L1 1 L0 4 L-1 1 L-4 0 L-1 -1 Z" />
+          <!-- Only show the sea inside this box. -->
+          <clipPath id="sea-clip">
+            <rect x="488" y="124" width="165" height="16" />
+          </clipPath>
+        </defs>
+
+        <!-- ===== BACK LAYER: depth behind everything ===== -->
+        <defs>
+          <radialGradient id="wash-rose">
+            <stop offset="0" stop-color="#f3a6c6" stop-opacity="0.22" />
+            <stop offset="1" stop-color="#f3a6c6" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="wash-gold">
+            <stop offset="0" stop-color="#e0a84a" stop-opacity="0.22" />
+            <stop offset="1" stop-color="#e0a84a" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="wash-teal">
+            <stop offset="0" stop-color="#55d6c2" stop-opacity="0.22" />
+            <stop offset="1" stop-color="#55d6c2" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="wash-coral">
+            <stop offset="0" stop-color="#ff7b72" stop-opacity="0.22" />
+            <stop offset="1" stop-color="#ff7b72" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="wash-violet">
+            <stop offset="0" stop-color="#a98bff" stop-opacity="0.22" />
+            <stop offset="1" stop-color="#a98bff" stop-opacity="0" />
+          </radialGradient>
+          <!-- Vehicles only show on their own road or track. -->
+          <clipPath id="road-clip"><rect x="-200" y="160" width="660" height="20" /></clipPath>
+          <clipPath id="track-clip"><rect x="660" y="160" width="740" height="20" /></clipPath>
+        </defs>
+
+        <!-- Soft colour per season: spring, summer, monsoon, autumn, winter. -->
+        <g class="washes">
+          <ellipse class="wash" style="--i: 0" cx="90" cy="90" rx="170" ry="85" fill="url(#wash-rose)" />
+          <ellipse class="wash" style="--i: 1" cx="330" cy="90" rx="170" ry="85" fill="url(#wash-gold)" />
+          <ellipse class="wash" style="--i: 2" cx="560" cy="90" rx="150" ry="85" fill="url(#wash-teal)" />
+          <ellipse class="wash" style="--i: 3" cx="790" cy="90" rx="170" ry="85" fill="url(#wash-coral)" />
+          <ellipse class="wash" style="--i: 4" cx="1030" cy="90" rx="170" ry="85" fill="url(#wash-violet)" />
+          <ellipse class="wash" style="--i: 5" cx="1180" cy="90" rx="120" ry="85" fill="url(#wash-rose)" />
+        </g>
+
+        <!-- One faint skyline from home to Germany. -->
+        <path class="skyline" d="M0 130 V120 q6.5 -10 13 0 V130 V121 h8 V130 V117 h9 V130 V119 q8 -10 16 0 V130 V116 q7 -10 14 0 V130 V114 q4.5 -10 9 0 V130 V119 h9 V130 V113 h8 V130 V119 q4 -10 8 0 V130 V118 q5 -10 10 0 V130 V121 h16 V130 V109 h16 V130 V113 h9 V130 V117 q5.5 -10 11 0 V130 V113 q4.5 -10 9 0 V130 V115 h11 V130 V110 q7 -10 14 0 V130 V117 q7.5 -10 15 0 V130 V90 h10 V130 V110 h11 V130 V96 h12 V130 V102 h15 V130 V103 h15 V130 V109 h9 V130 V99 h16 V130 V88 h10 V130 V108 h13 V130 V99 h15 V130 V91 h8 V130 V88 h9 V130 V94 h16 V130 V102 h13 V130 V93 h13 V130 V94 h15 V130 V110 h15 V130 V104 h9 V130 V90 h15 V130 V111 h9 V130 V92 h12 V130 H660 V116 l7.5 -8 l7.5 8 V130 V110 l7 -8 l7 8 V130 V120 l6.5 -8 l6.5 8 V130 V115 l7.5 -8 l7.5 8 V130 V111 l5 -8 l5 8 V130 V113 l4.5 -8 l4.5 8 V130 V104 l4 -24 l4 24 V130 V104 l6 -24 l6 24 V130 V114 l5.5 -8 l5.5 8 V130 V113 l7 -8 l7 8 V130 V118 l4.5 -8 l4.5 8 V130 V114 l7.5 -8 l7.5 8 V130 V116 l8 -8 l8 8 V130 V114 l5 -8 l5 8 V130 V116 l8 -8 l8 8 V130 V115 l7 -8 l7 8 V130 V117 l7 -8 l7 8 V130 V119 l5 -8 l5 8 V130 V112 h10 V130 V109 h11 V130 V101 h8 V130 V108 h10 V130 V116 h12 V130 V103 h10 V130 V105 h16 V130 V112 h13 V130 V97 h16 V130 V102 h8 V130 V104 h16 V130 V104 h14 V130 V113 h14 V130 V96 h15 V130 V115 h14 V130 V114 h11 V130 V102 h11 V130 V113 h10 V130 V97 h13 V130 V113 h8 V130 V98 h8 V130 V99 h10 V130 V105 h9 V130 V114 h8 V130 V97 h11 V130 V112 h14 V130 V105 h12 V130 V101 h13 V130 V130 H0 Z" />
+
+        <!-- More tiny stars to fill the sky. -->
+        <circle class="dot-star" style="--i: 0" cx="60" cy="70" r="0.9" />
+        <circle class="dot-star" style="--i: 1" cx="250" cy="36" r="0.9" />
+        <circle class="dot-star" style="--i: 2" cx="420" cy="26" r="0.9" />
+        <circle class="dot-star" style="--i: 3" cx="520" cy="34" r="0.9" />
+        <circle class="dot-star" style="--i: 4" cx="690" cy="30" r="0.9" />
+        <circle class="dot-star" style="--i: 5" cx="820" cy="38" r="0.9" />
+        <circle class="dot-star" style="--i: 6" cx="960" cy="28" r="0.9" />
+        <circle class="dot-star" style="--i: 7" cx="1090" cy="60" r="0.9" />
+        <circle class="dot-star" style="--i: 8" cx="1185" cy="30" r="0.9" />
+        <circle class="dot-star" style="--i: 9" cx="300" cy="60" r="0.9" />
+
+        <!-- Wind turbines: clean energy, they keep turning. -->
+        <g class="violet">
+          <g class="turbine">
+            <path d="M874 130 V92" />
+            <g class="blades" style="--i: 0; transform-origin: 874px 92px">
+              <path d="M874 92 V82 M874 92 L882.7 97 M874 92 L865.3 97" />
+            </g>
+          </g>
+          <g class="turbine">
+            <path d="M1190 130 V100" />
+            <g class="blades" style="--i: 1; transform-origin: 1190px 100px">
+              <path d="M1190 100 V90 M1190 100 L1198.7 105 M1190 100 L1181.3 105" />
+            </g>
+          </g>
+        </g>
+
+        <!-- A flock of birds crossing the whole sky. -->
+        <path id="bird-route" d="M-40 70 C300 30 600 80 1240 40" stroke="none" />
+        <g class="birds">
+          <path class="bird" d="M0 0 q3 -3 6 0 q3 -3 6 0" />
+          <path class="bird" style="--i: 1" d="M10 -8 q2 -2 4 0 q2 -2 4 0" />
+          <path class="bird" style="--i: 2" d="M-8 -6 q2 -2 4 0 q2 -2 4 0" />
+          <animateMotion dur="40s" repeatCount="indefinite">
+            <mpath href="#bird-route" />
+          </animateMotion>
+        </g>
+
+        <!-- Ground: a Bangalore road with an auto-rickshaw, German tracks with a train. -->
+        <path class="road" d="M-200 174 H460" />
+        <g clip-path="url(#road-clip)">
+          <g class="auto">
+            <path d="M0 174 V167 Q0 164 4 164 H10 L13 169 V174 Z M4 164 V174" />
+            <circle cx="2.5" cy="175" r="1.6" />
+            <circle cx="11" cy="175" r="1.6" />
+          </g>
+        </g>
+        <path class="track" d="M660 175 H1400" />
+        <g clip-path="url(#track-clip)">
+          <g class="train">
+            <path d="M0 173 V167 H16 V173 Z M18 173 V167 H34 V173 Z M36 173 V167 H48 Q54 167 56 173 Z" />
+            <path d="M3 169 H13 M21 169 H31 M39 169 H48" />
+          </g>
+        </g>
+
+        <!-- Jasmine (mallige) garland: the roof trim, from home. -->
+        <path class="garland" d="M0 8 Q75 30 150 8 Q225 30 300 8 Q375 30 450 8 Q525 30 600 8 Q675 30 750 8 Q825 30 900 8 Q975 30 1050 8 Q1125 30 1200 8" />
+        <g class="buds">
+          <circle class="bud" style="--i: 0" cx="37.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 1" cx="75" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 2" cx="112.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 3" cx="187.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 4" cx="225" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 5" cx="262.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 6" cx="337.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 7" cx="375" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 8" cx="412.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 9" cx="487.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 10" cx="525" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 11" cx="562.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 12" cx="637.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 13" cx="675" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 14" cx="712.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 15" cx="787.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 16" cx="825" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 17" cx="862.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 18" cx="937.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 19" cx="975" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 20" cx="1012.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 21" cx="1087.5" cy="16.25" r="2.4" />
+          <circle class="bud" style="--i: 22" cx="1125" cy="19" r="2.4" />
+          <circle class="bud" style="--i: 23" cx="1162.5" cy="16.25" r="2.4" />
+        </g>
+
+        <!-- Sparkles in the sky. -->
+        <use href="#star" class="twinkle" style="--i: 0" x="150" y="52" />
+        <use href="#star" class="twinkle" style="--i: 1" x="332" y="46" />
+        <use href="#star" class="twinkle" style="--i: 2" x="468" y="52" />
+        <use href="#star" class="twinkle" style="--i: 3" x="704" y="48" />
+        <use href="#star" class="twinkle" style="--i: 4" x="760" y="62" />
+        <use href="#star" class="twinkle" style="--i: 5" x="900" y="52" />
+        <use href="#star" class="twinkle" style="--i: 6" x="1000" y="44" />
+        <use href="#star" class="twinkle" style="--i: 7" x="1128" y="42" />
+
+        <!-- ===== MANY SMALL THINGS: tiny icons of my life ===== -->
+        <defs>
+          <symbol id="i-gear" viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.5" /><path d="M5 0.5 V2 M5 8 V9.5 M0.5 5 H2 M8 5 H9.5 M1.8 1.8 L2.9 2.9 M7.1 7.1 L8.2 8.2 M8.2 1.8 L7.1 2.9 M2.9 7.1 L1.8 8.2" /></symbol>
+          <symbol id="i-led" viewBox="0 0 10 10"><path d="M3 6 V4 A2 2 0 0 1 7 4 V6 Z M4 6 V10 M6 6 V9" /></symbol>
+          <symbol id="i-cap" viewBox="0 0 10 10"><path d="M5 0 V4 M2 4 H8 M2 6 H8 M5 6 V10" /></symbol>
+          <symbol id="i-battery" viewBox="0 0 10 10"><rect x="1" y="3" width="7" height="4" rx="0.5" /><path d="M8.5 4.3 V5.7 M3 4 V6" /></symbol>
+          <symbol id="i-meter" viewBox="0 0 10 10"><rect x="2" y="0.5" width="6" height="9" rx="1" /><rect x="3" y="1.5" width="4" height="2.5" /><circle cx="5" cy="6.5" r="1.5" /></symbol>
+          <symbol id="i-books" viewBox="0 0 10 10"><rect x="1" y="6.5" width="8" height="2.5" /><rect x="2" y="4" width="7" height="2.5" /><rect x="1.5" y="1.5" width="6" height="2.5" /></symbol>
+          <symbol id="i-gradcap" viewBox="0 0 10 10"><path d="M0 4 L5 1.5 L10 4 L5 6.5 Z M2.5 5.2 V7.5 Q5 9 7.5 7.5 V5.2 M10 4 V7" /></symbol>
+          <symbol id="i-laptop" viewBox="0 0 10 10"><rect x="2" y="1.5" width="6" height="5" rx="0.5" /><path d="M0.5 8.5 H9.5 L8.5 6.5 H1.5 Z" /></symbol>
+          <symbol id="i-camera" viewBox="0 0 10 10"><rect x="1" y="3" width="8" height="5.5" rx="1" /><circle cx="5" cy="5.7" r="1.8" /><path d="M3.5 3 L4.2 1.8 H5.8 L6.5 3" /></symbol>
+          <symbol id="i-passport" viewBox="0 0 10 10"><rect x="2" y="0.5" width="6" height="9" rx="0.8" /><circle cx="5" cy="4" r="1.6" /><path d="M3.5 7 H6.5" /></symbol>
+          <symbol id="i-compass" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" /><path d="M5 2 L6 5 L5 8 L4 5 Z" /></symbol>
+          <symbol id="i-backpack" viewBox="0 0 10 10"><rect x="2" y="2.5" width="6" height="7" rx="2" /><path d="M3.5 2.5 V1.5 H6.5 V2.5" /><rect x="3.5" y="5.5" width="3" height="2" /></symbol>
+          <symbol id="i-boot" viewBox="0 0 10 10"><path d="M3 1 H5.5 V5 L8.5 6.5 Q9.5 7 9.5 8.5 V9.5 H3 Z M3 7.5 H9.5" /></symbol>
+          <symbol id="i-pawn" viewBox="0 0 10 10"><circle cx="5" cy="2.5" r="1.5" /><path d="M3.5 9.5 H6.5 M4 9.5 L4.4 5 H5.6 L6 9.5 M3.5 5 H6.5" /></symbol>
+          <symbol id="i-shuttle" viewBox="0 0 10 10"><path d="M5 9 L2 2 M5 9 L8 2 M5 9 V1.5 M2.5 3.5 H7.5" /><circle cx="5" cy="9" r="0.8" /></symbol>
+          <symbol id="i-goggles" viewBox="0 0 10 10"><circle cx="3" cy="5" r="2" /><circle cx="7" cy="5" r="2" /><path d="M1 5 H0 M9 5 H10" /></symbol>
+          <symbol id="i-mug" viewBox="0 0 10 10"><path d="M2 2 H7 V8 Q7 9 6 9 H3 Q2 9 2 8 Z M7 3.5 Q9 3.5 9 5.5 Q9 7 7 7" /></symbol>
+          <symbol id="i-heart" viewBox="0 0 10 10"><path d="M5 9 C1 6 0 4 2 2 C3.5 0.8 5 2 5 3 C5 2 6.5 0.8 8 2 C10 4 9 6 5 9 Z" /></symbol>
+          <symbol id="i-plant" viewBox="0 0 10 10"><path d="M3 6 H7 L6.5 9.5 H3.5 Z M5 6 V3 M5 4 C3 4 2.5 2 2.5 1.5 C4 1.5 5 2.5 5 4 M5 3.5 C7 3.5 7.5 1.5 7.5 1 C6 1 5 2 5 3.5" /></symbol>
+          <symbol id="i-bike" viewBox="0 0 10 10"><circle cx="2.5" cy="7" r="2" /><circle cx="7.5" cy="7" r="2" /><path d="M2.5 7 L4.5 3.5 H7 L7.5 7 M4.5 3.5 L5.5 7 L7 3.5 M4 2.5 H5.5" /></symbol>
+          <symbol id="i-umbrella" viewBox="0 0 10 10"><path d="M1 5 Q5 0 9 5 Z M5 5 V8.5 Q5 9.5 4 9.5" /></symbol>
+          <symbol id="i-ticket" viewBox="0 0 10 10"><rect x="0.5" y="2.5" width="9" height="5" rx="0.6" /><path d="M6.5 2.5 V7.5 M2 4.5 H5 M2 6 H4" /></symbol>
+          <symbol id="i-scope" viewBox="0 0 10 10"><rect x="0.5" y="1.5" width="9" height="7" rx="1" /><path d="M1.5 5 H3 L4 3 L5 7 L6 3 L7 5 H8.5" /></symbol>
+          <symbol id="i-house" viewBox="0 0 10 10"><path d="M1 5 L5 1.5 L9 5 V9.5 H1 Z M4 9.5 V6.5 H6 V9.5" /></symbol>
+          <symbol id="i-tree" viewBox="0 0 10 10"><circle cx="5" cy="4" r="3.5" /><path d="M5 7.5 V9.8" /></symbol>
+          <symbol id="i-balloon" viewBox="0 0 10 10"><path d="M5 0.5 C8 0.5 9 3 9 4.5 C9 6.5 6.5 7.5 6 8 H4 C3.5 7.5 1 6.5 1 4.5 C1 3 2 0.5 5 0.5 Z M4 8 L4.3 9.5 H5.7 L6 8 M5 0.5 V8" /></symbol>
+          <symbol id="i-wrench" viewBox="0 0 10 10"><path d="M2 8.5 L6 4.5 M6 4.5 A2.2 2.2 0 1 1 8.5 2 L7 3.5" /></symbol>
+          <symbol id="i-chip" viewBox="0 0 10 10"><rect x="2.5" y="2.5" width="5" height="5" /><path d="M4 2.5 V1 M6 2.5 V1 M4 7.5 V9 M6 7.5 V9 M2.5 4 H1 M2.5 6 H1 M7.5 4 H9 M7.5 6 H9" /></symbol>
+        </defs>
+          <ellipse class="wash" style="--i: 6" cx="-100" cy="90" rx="140" ry="85" fill="url(#wash-gold)" />
+          <ellipse class="wash" style="--i: 7" cx="1300" cy="90" rx="140" ry="85" fill="url(#wash-teal)" />
+          <path class="skyline" d="M-200 130 V116 h10 V130 V117 h13 V130 V115 l6.5 -6 l6.5 6 V130 V116 h13 V130 V112 l5.5 -6 l5.5 6 V130 V120 l5 -6 l5 6 V130 V112 h11 V130 V124 h12 V130 V117 h10 V130 V114 l5.5 -6 l5.5 6 V130 V116 l3.5 -6 l3.5 6 V130 V121 h7 V130 V124 h11 V130 V117 h9 V130 V116 l4 -6 l4 6 V130 V117 l4.5 -6 l4.5 6 V130 V117 h7 V130 V116 h10 V130 V123 h13 V130 V112 l4.5 -6 l4.5 6 V130 V130 H-200 Z" />
+          <path class="skyline" d="M1200 130 V118 l4.5 -6 l4.5 6 V130 V115 h13 V130 V109 l6.5 -6 l6.5 6 V130 V91 h7 V130 V112 h8 V130 V103 l3.5 -6 l3.5 6 V130 V106 h12 V130 V98 l5.5 -6 l5.5 6 V130 V110 l6 -6 l6 6 V130 V108 l4.5 -6 l4.5 6 V130 V94 h10 V130 V111 h8 V130 V117 h7 V130 V113 h10 V130 V104 h8 V130 V94 l6 -6 l6 6 V130 V106 l6 -6 l6 6 V130 V112 l5 -6 l5 6 V130 V93 h13 V130 V112 l3.5 -6 l3.5 6 V130 V99 h13 V130 V130 H1200 Z" />
+          <path class="garland" d="M-200 8 Q-150 30 -100 8 Q-50 30 0 8 M1200 8 Q1250 30 1300 8 Q1350 30 1400 8" />
+          <circle class="bud" style="--i: 40" cx="-175" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 41" cx="-150" cy="19" r="2.2" />
+          <circle class="bud" style="--i: 42" cx="-125" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 43" cx="-75" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 44" cx="-50" cy="19" r="2.2" />
+          <circle class="bud" style="--i: 45" cx="-25" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 46" cx="1225" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 47" cx="1250" cy="19" r="2.2" />
+          <circle class="bud" style="--i: 48" cx="1275" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 49" cx="1325" cy="16.25" r="2.2" />
+          <circle class="bud" style="--i: 50" cx="1350" cy="19" r="2.2" />
+          <circle class="bud" style="--i: 51" cx="1375" cy="16.25" r="2.2" />
+
+        <!-- Childhood (left): home, mango tree, school, first tools. -->
+        <g class="icons">
+          <use href="#i-house" class="small gold" style="--i: 0" x="-186" y="112" width="18" height="18" />
+          <use href="#i-tree" class="small sway-small gold" style="--i: 0" x="-164" y="106" width="24" height="24" />
+          <use href="#i-backpack" class="small rose" style="--i: 0" x="-136" y="118" width="12" height="12" />
+          <use href="#i-books" class="small rose" style="--i: 0" x="-118" y="118" width="12" height="12" />
+          <use href="#i-gradcap" class="small gold" style="--i: 0" x="-100" y="114" width="14" height="14" />
+          <use href="#i-meter" class="small rose" style="--i: 0" x="-80" y="117" width="12" height="12" />
+          <use href="#i-led" class="small blink coral" style="--i: 1" x="-64" y="118" width="11" height="11" />
+          <use href="#i-chip" class="small teal" style="--i: 0" x="-48" y="118" width="12" height="12" />
+          <use href="#i-wrench" class="small teal" style="--i: 0" x="-30" y="118" width="11" height="11" />
+          <use href="#i-mug" class="small gold" style="--i: 0" x="-14" y="118" width="11" height="11" />
+          <use href="#i-gear" class="tiny teal" style="--i: 0" x="-150" y="40" width="10" height="10" />
+          <use href="#i-heart" class="tiny pulse rose" style="--i: 0" x="-110" y="52" width="9" height="9" />
+          <use href="#i-compass" class="tiny teal" style="--i: 0" x="-60" y="40" width="10" height="10" />
+          <use href="#i-pawn" class="tiny rose" style="--i: 0" x="-30" y="56" width="9" height="9" />
+          <use href="#i-shuttle" class="tiny cream" style="--i: 0" x="-170" y="150" width="10" height="10" />
+          <use href="#i-goggles" class="tiny teal" style="--i: 0" x="-130" y="152" width="10" height="10" />
+          <use href="#i-books" class="tiny rose" style="--i: 0" x="-90" y="150" width="10" height="10" />
+          <use href="#i-battery" class="tiny rose" style="--i: 0" x="-50" y="152" width="10" height="10" />
+          <use href="#i-cap" class="tiny rose" style="--i: 0" x="-14" y="150" width="10" height="10" />
+
+        <!-- Future (right): Master's, books, a home, a plant, a bike, dreams in the sky. -->
+          <use href="#i-gradcap" class="small toss gold" style="--i: 0" x="1226" y="112" width="16" height="16" />
+          <use href="#i-books" class="small rose" style="--i: 0" x="1246" y="118" width="12" height="12" />
+          <use href="#i-laptop" class="small teal" style="--i: 0" x="1262" y="118" width="12" height="12" />
+          <use href="#i-house" class="small violet" style="--i: 0" x="1280" y="110" width="20" height="20" />
+          <use href="#i-heart" class="tiny pulse rose" style="--i: 0" x="1286" y="98" width="8" height="8" />
+          <use href="#i-plant" class="small sway-small teal" style="--i: 0" x="1304" y="116" width="14" height="14" />
+          <use href="#i-bike" class="small violet" style="--i: 0" x="1322" y="116" width="14" height="14" />
+          <use href="#i-chip" class="small teal" style="--i: 0" x="1342" y="118" width="12" height="12" />
+          <use href="#i-gear" class="small spin-small gold" style="--i: 0" x="1358" y="116" width="13" height="13" />
+          <use href="#i-led" class="small blink coral" style="--i: 2" x="1374" y="118" width="11" height="11" />
+          <use href="#i-balloon" class="small float coral" style="--i: 0" x="1240" y="46" width="18" height="18" />
+          <use href="#i-camera" class="tiny teal" style="--i: 0" x="1220" y="60" width="10" height="10" />
+          <use href="#i-ticket" class="tiny gold" style="--i: 0" x="1270" y="70" width="10" height="10" />
+          <use href="#i-compass" class="tiny teal" style="--i: 0" x="1350" y="64" width="10" height="10" />
+          <use href="#i-mug" class="tiny gold" style="--i: 0" x="1210" y="150" width="10" height="10" />
+          <use href="#i-boot" class="tiny violet" style="--i: 0" x="1246" y="152" width="10" height="10" />
+          <use href="#i-goggles" class="tiny teal" style="--i: 0" x="1282" y="150" width="10" height="10" />
+          <use href="#i-pawn" class="tiny rose" style="--i: 0" x="1318" y="152" width="10" height="10" />
+          <use href="#i-shuttle" class="tiny cream" style="--i: 0" x="1352" y="150" width="10" height="10" />
+          <use href="#i-passport" class="tiny gold" style="--i: 0" x="1384" y="150" width="10" height="10" />
+          <g class="constellation">
+            <path d="M1300 40 L1318 30 L1336 38 L1352 26 L1372 34 L1390 22" />
+            <circle cx="1300" cy="40" r="1.4" /><circle cx="1318" cy="30" r="1.4" /><circle cx="1336" cy="38" r="1.4" />
+            <circle cx="1352" cy="26" r="1.4" /><circle cx="1372" cy="34" r="1.4" /><circle cx="1390" cy="22" r="1.4" />
+          </g>
+          <use href="#star" class="twinkle" style="--i: 3" x="1394" y="124" />
+
+        <!-- Small things in every gap along the way. -->
+          <use href="#i-gear" class="tiny teal" style="--i: 0" x="186" y="34" width="10" height="10" />
+          <use href="#i-compass" class="tiny teal" style="--i: 1" x="342" y="30" width="10" height="10" />
+          <use href="#i-ticket" class="tiny gold" style="--i: 2" x="478" y="34" width="10" height="10" />
+          <use href="#i-camera" class="tiny teal" style="--i: 3" x="556" y="24" width="10" height="10" />
+          <use href="#i-umbrella" class="tiny teal" style="--i: 4" x="404" y="66" width="10" height="10" />
+          <use href="#i-heart" class="tiny rose" style="--i: 5" x="716" y="38" width="10" height="10" />
+          <use href="#i-shuttle" class="tiny cream" style="--i: 6" x="778" y="46" width="10" height="10" />
+          <use href="#i-chip" class="tiny teal" style="--i: 7" x="956" y="36" width="10" height="10" />
+          <use href="#i-led" class="tiny coral" style="--i: 8" x="1120" y="50" width="10" height="10" />
+          <use href="#i-pawn" class="tiny rose" style="--i: 9" x="186" y="119" width="10" height="10" />
+          <use href="#i-laptop" class="tiny rose" style="--i: 10" x="318" y="112" width="10" height="10" />
+          <use href="#i-camera" class="tiny teal" style="--i: 11" x="457" y="102" width="10" height="10" />
+          <use href="#i-passport" class="tiny gold" style="--i: 12" x="478" y="119" width="10" height="10" />
+          <use href="#i-backpack" class="tiny violet" style="--i: 13" x="666" y="119" width="10" height="10" />
+          <use href="#i-boot" class="tiny violet" style="--i: 14" x="744" y="119" width="10" height="10" />
+          <use href="#i-pawn" class="tiny rose" style="--i: 15" x="1020" y="119" width="10" height="10" />
+          <use href="#i-goggles" class="tiny teal" style="--i: 16" x="640" y="120" width="10" height="10" />
+          <use href="#i-mug" class="tiny gold" style="--i: 17" x="132" y="146" width="10" height="10" />
+          <use href="#i-cap" class="tiny rose" style="--i: 18" x="206" y="146" width="10" height="10" />
+          <use href="#i-battery" class="tiny rose" style="--i: 19" x="222" y="156" width="10" height="10" />
+          <use href="#i-meter" class="tiny rose" style="--i: 20" x="356" y="146" width="10" height="10" />
+          <use href="#i-scope" class="tiny rose" style="--i: 21" x="372" y="158" width="10" height="10" />
+          <use href="#i-gear" class="tiny teal" style="--i: 22" x="446" y="152" width="10" height="10" />
+          <use href="#i-ticket" class="tiny gold" style="--i: 23" x="488" y="152" width="10" height="10" />
+          <use href="#i-compass" class="tiny teal" style="--i: 24" x="562" y="148" width="10" height="10" />
+          <use href="#i-goggles" class="tiny teal" style="--i: 25" x="642" y="150" width="10" height="10" />
+          <use href="#i-wrench" class="tiny teal" style="--i: 26" x="874" y="150" width="10" height="10" />
+          <use href="#i-gear" class="tiny violet" style="--i: 27" x="1050" y="150" width="10" height="10" />
+        </g>
+
+        <!-- ===== SEASONS AND FESTIVALS around the whole year ===== -->
+        <defs>
+          <path id="leaf" d="M0 -4 C3 -2 3 2 0 4 C-3 2 -3 -2 0 -4 Z M0 -4 V4" />
+          <circle id="flake" r="1.3" />
+          <ellipse id="petal" rx="2" ry="1.2" />
+        </defs>
+
+        <g class="seasons">
+          <!-- Spring: a blossom branch from the top corner, petals drifting down. -->
+          <g class="rose">
+            <path d="M0 20 C20 24 40 30 62 44 M28 28 C32 22 38 20 42 20 M46 34 C50 30 56 30 60 30" />
+            <circle class="blossom" cx="42" cy="20" r="2.4" />
+            <circle class="blossom" cx="60" cy="30" r="2.4" />
+            <circle class="blossom" cx="62" cy="44" r="2.4" />
+            <circle class="blossom" cx="20" cy="24" r="2.4" />
+          <use href="#petal" class="petal-fall" style="--i: 0" x="30" y="44" />
+          <use href="#petal" class="petal-fall" style="--i: 1" x="48" y="40" />
+          <use href="#petal" class="petal-fall" style="--i: 2" x="64" y="48" />
+          </g>
+
+          <!-- Diwali: a lantern (akash kandil) hangs from the garland. -->
+          <g class="gold lantern">
+            <path d="M150 8 V28" />
+            <path class="lantern-body" d="M150 28 L158 37 L150 48 L142 37 Z M142 37 H158" />
+            <path d="M147 48 V55 M150 48 V57 M153 48 V55" />
+          </g>
+
+          <!-- Diwali: three diyas (oil lamps) with flickering flames. -->
+          <g class="gold">
+            <path d="M44 152 Q50 158 56 152 Z M74 152 Q80 158 86 152 Z M104 152 Q110 158 116 152 Z" />
+            <path class="flame" d="M50 150 C48 147 50 144 50 142 C50 144 52 147 50 150 Z" />
+            <path class="flame" style="animation-delay: -0.3s" d="M80 150 C78 147 80 144 80 142 C80 144 82 147 80 150 Z" />
+            <path class="flame" style="animation-delay: -0.6s" d="M110 150 C108 147 110 144 110 142 C110 144 112 147 110 150 Z" />
+          </g>
+
+          <!-- Rangoli under the kolam loop, drawn again and again. -->
+          <g class="rose">
+            <path class="rangoli" pathLength="1" d="M170 142 C176 147 176 155 170 160 C164 155 164 147 170 142 Z M161 151 C166 145 174 145 179 151 C174 157 166 157 161 151 Z" />
+            <circle class="rangoli-dot" cx="170" cy="151" r="1.4" />
+          </g>
+
+          <!-- Monsoon: a rain cloud over the code window. -->
+          <g class="teal">
+            <path d="M372 44 a6 6 0 0 1 11 -4 a7 7 0 0 1 13 2 a5 5 0 0 1 0 10 H375 a5 5 0 0 1 -3 -8 Z" />
+            <path class="rain" style="--i: 0" d="M378 56 l-2 5" />
+            <path class="rain" style="--i: 1" d="M386 56 l-2 5" />
+            <path class="rain" style="--i: 2" d="M394 56 l-2 5" />
+            <path class="rain" style="--i: 3" d="M402 56 l-2 5" />
+          </g>
+
+          <!-- Electrical roots: circuit traces grow down from the line. -->
+          <g class="rose roots">
+            <path d="M244 131 V146 H270 V158 M270 146 H298 V154 M310 131 V150 H338 V160 M392 122 V148 H418 V158 M418 148 H438" />
+            <circle class="node" style="--i: 0" cx="270" cy="158" r="1.6" />
+            <circle class="node" style="--i: 1" cx="298" cy="154" r="1.6" />
+            <circle class="node" style="--i: 2" cx="338" cy="160" r="1.6" />
+            <circle class="node" style="--i: 3" cx="418" cy="158" r="1.6" />
+            <circle class="node" style="--i: 4" cx="438" cy="148" r="1.6" />
+          </g>
+
+          <!-- Festive fireworks. -->
+          <g transform="translate(432 42)"><g class="firework gold" style="--i: 0"><path d="M0 -4 V-10 M0 4 V10 M-4 0 H-10 M4 0 H10 M3 -3 L7 -7 M-3 3 L-7 7 M3 3 L7 7 M-3 -3 L-7 -7" /></g></g>
+          <g transform="translate(872 40)"><g class="firework rose" style="--i: 1"><path d="M0 -4 V-10 M0 4 V10 M-4 0 H-10 M4 0 H10 M3 -3 L7 -7 M-3 3 L-7 7 M3 3 L7 7 M-3 -3 L-7 -7" /></g></g>
+
+          <!-- Fish swimming under the sea. -->
+          <g class="teal">
+            <path class="fish" d="M520 152 C524 149 529 149 532 152 C529 155 524 155 520 152 Z M520 152 L516 149 V155 Z" />
+            <path class="fish fish-back" d="M600 158 C604 155 609 155 612 158 C609 161 604 161 600 158 Z M612 158 L616 155 V161 Z" />
+          </g>
+
+          <!-- Autumn: leaves fall over the hills and lie on the ground. -->
+          <g class="autumn">
+          <use href="#leaf" class="leaf-fall" style="--i: 0" x="700" y="30" />
+          <use href="#leaf" class="leaf-fall" style="--i: 1" x="742" y="22" />
+          <use href="#leaf" class="leaf-fall" style="--i: 2" x="785" y="34" />
+          <use href="#leaf" class="leaf-fall" style="--i: 3" x="828" y="26" />
+          <use href="#leaf" class="leaf-fall" style="--i: 4" x="860" y="38" />
+          <use href="#leaf" class="leaf-ground" x="690" y="146" transform="rotate(30 690 146)" />
+          <use href="#leaf" class="leaf-ground" x="712" y="152" transform="rotate(-40 712 152)" />
+          <use href="#leaf" class="leaf-ground" x="738" y="144" transform="rotate(70 738 144)" />
+          <use href="#leaf" class="leaf-ground" x="766" y="150" transform="rotate(-20 766 150)" />
+          <use href="#leaf" class="leaf-ground" x="796" y="146" transform="rotate(50 796 146)" />
+          <use href="#leaf" class="leaf-ground" x="824" y="153" transform="rotate(-60 824 153)" />
+          <use href="#leaf" class="leaf-ground" x="852" y="147" transform="rotate(15 852 147)" />
+          </g>
+
+          <!-- Winter: snow falls, and Christmas lights hang under the line. -->
+          <g class="cream">
+          <use href="#flake" class="snow" style="--i: 0" x="884" y="24" />
+          <use href="#flake" class="snow" style="--i: 1" x="906" y="34" />
+          <use href="#flake" class="snow" style="--i: 2" x="930" y="22" />
+          <use href="#flake" class="snow" style="--i: 3" x="954" y="30" />
+          <use href="#flake" class="snow" style="--i: 4" x="980" y="20" />
+          <use href="#flake" class="snow" style="--i: 5" x="1004" y="36" />
+          <use href="#flake" class="snow" style="--i: 6" x="1026" y="26" />
+          <use href="#flake" class="snow" style="--i: 7" x="1044" y="32" />
+          </g>
+          <g class="lights">
+            <path d="M880 140 Q920 154 960 140 Q1000 154 1040 140" />
+          <circle class="bulb" style="--i: 0" cx="890" cy="145" r="2.2" />
+          <circle class="bulb" style="--i: 1" cx="910" cy="149" r="2.2" />
+          <circle class="bulb" style="--i: 2" cx="930" cy="145" r="2.2" />
+          <circle class="bulb" style="--i: 3" cx="950" cy="142" r="2.2" />
+          <circle class="bulb" style="--i: 4" cx="970" cy="145" r="2.2" />
+          <circle class="bulb" style="--i: 5" cx="990" cy="149" r="2.2" />
+          <circle class="bulb" style="--i: 6" cx="1010" cy="145" r="2.2" />
+          <circle class="bulb" style="--i: 7" cx="1030" cy="142" r="2.2" />
+          </g>
+
+          <!-- Christmas star hanging from the garland. -->
+          <g class="gold xmas-star">
+            <path d="M1050 8 V26" />
+            <path d="M1050 26 L1053 33 L1060 33 L1054 37 L1056 44 L1050 40 L1044 44 L1046 37 L1040 33 L1047 33 Z" />
+          </g>
+
+          <!-- Spring again at the end: new flowers bloom. Life goes on. -->
+          <g class="rose">
+          <g class="bloom" style="--i: 0">
+            <path d="M1072 166 V154" />
+            <circle cx="1072" cy="150" r="2" />
+            <circle cx="1069" cy="150" r="1.6" /><circle cx="1075" cy="150" r="1.6" />
+            <circle cx="1072" cy="147" r="1.6" /><circle cx="1072" cy="153" r="1.6" />
+          </g>
+          <g class="bloom" style="--i: 1">
+            <path d="M1096 166 V148" />
+            <circle cx="1096" cy="144" r="2" />
+            <circle cx="1093" cy="144" r="1.6" /><circle cx="1099" cy="144" r="1.6" />
+            <circle cx="1096" cy="141" r="1.6" /><circle cx="1096" cy="147" r="1.6" />
+          </g>
+          <g class="bloom" style="--i: 2">
+            <path d="M1124 166 V156" />
+            <circle cx="1124" cy="152" r="2" />
+            <circle cx="1121" cy="152" r="1.6" /><circle cx="1127" cy="152" r="1.6" />
+            <circle cx="1124" cy="149" r="1.6" /><circle cx="1124" cy="155" r="1.6" />
+          </g>
+          <g class="bloom" style="--i: 3">
+            <path d="M1150 166 V150" />
+            <circle cx="1150" cy="146" r="2" />
+            <circle cx="1147" cy="146" r="1.6" /><circle cx="1153" cy="146" r="1.6" />
+            <circle cx="1150" cy="143" r="1.6" /><circle cx="1150" cy="149" r="1.6" />
+          </g>
+          <g class="bloom" style="--i: 4">
+            <path d="M1176 166 V154" />
+            <circle cx="1176" cy="150" r="2" />
+            <circle cx="1173" cy="150" r="1.6" /><circle cx="1179" cy="150" r="1.6" />
+            <circle cx="1176" cy="147" r="1.6" /><circle cx="1176" cy="153" r="1.6" />
+          </g>
+          </g>
+        </g>
+
+        <!-- The life line: faint copy always there, bright copy drawn as she walks. -->
+        <path id="life-line" class="line-ghost" d="M-190 130 H150 C175 130 185 95 165 95 C145 95 155 130 180 130 H200 L206 122 L214 138 L222 122 L230 138 L238 122 L244 130 H260 q10 -16 20 0 t20 0 H310 V100 H445 V130 H480 C530 40 620 40 660 130 H750 L780 100 L800 115 L830 80 L860 125 L870 130 H1030 C1042 60 1060 66 1074 90 S1100 84 1116 86 H1180 C1200 86 1200 130 1220 130 H1390" />
+        <path class="line-live" pathLength="1" d="M-190 130 H150 C175 130 185 95 165 95 C145 95 155 130 180 130 H200 L206 122 L214 138 L222 122 L230 138 L238 122 L244 130 H260 q10 -16 20 0 t20 0 H310 V100 H445 V130 H480 C530 40 620 40 660 130 H750 L780 100 L800 115 L830 80 L860 125 L870 130 H1030 C1042 60 1060 66 1074 90 S1100 84 1116 86 H1180 C1200 86 1200 130 1220 130 H1390" />
+
+        <!-- ===== 1. BENGALURU: home, sun, palm, temple tower, kaapi, kolam ===== -->
+        <g class="gold">
+          <path d="M30 130 C22 120 20 116 20 112 A10 10 0 0 1 40 112 C40 116 38 120 30 130 Z" />
+          <circle cx="30" cy="112" r="3" />
+          <g class="sun">
+            <circle cx="100" cy="50" r="9" />
+            <path d="M100 34 V38 M100 62 V66 M84 50 H88 M112 50 H116 M89 39 L92 42 M108 58 L111 61 M111 39 L108 42 M92 58 L89 61" />
+          </g>
+          <g class="palm">
+            <path d="M50 130 C52 117 48 107 52 98 M52 98 C44 94 40 98 36 102 M52 98 C58 92 64 94 68 100 M52 98 C48 92 46 90 42 90 M52 98 C56 92 60 90 64 90" />
+          </g>
+          <path d="M74 130 V120 H108 V130 M77 120 V112 H105 V120 M80 112 V104 H102 V112 M83 104 V98 H99 V104 M86 98 V93 H96 V98 M91 93 V89" />
+          <path d="M116 130 H140 L136 124 H120 Z M121 124 L119 106 H137 L135 124" />
+          <path class="steam" style="--i: 0" d="M124 102 C121 96 127 92 124 86" />
+          <path class="steam" style="--i: 1" d="M129 102 C126 96 132 92 129 84" />
+          <path class="steam" style="--i: 2" d="M134 102 C131 96 137 92 134 86" />
+        </g>
+        <g class="rose kolam-dots">
+          <circle cx="150" cy="104" r="1.3" />
+          <circle cx="180" cy="104" r="1.3" />
+          <circle cx="165" cy="84" r="1.3" />
+          <circle cx="165" cy="112" r="1.3" />
+        </g>
+
+        <!-- ===== 2. ELECTRICAL ROOTS + badminton in the sky ===== -->
+        <g class="cream">
+          <ellipse cx="214" cy="76" rx="4" ry="6" />
+          <path d="M214 82 V92" />
+          <ellipse cx="306" cy="76" rx="4" ry="6" />
+          <path d="M306 82 V92" />
+          <path id="rally" d="M220 72 Q260 28 300 72" stroke="none" />
+          <g class="shuttle">
+            <path d="M0 0 L-7 -3 L-7 3 Z" />
+            <circle cx="1" cy="0" r="1.5" />
+            <animateMotion dur="3s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear">
+              <mpath href="#rally" />
+            </animateMotion>
+          </g>
+        </g>
+
+        <!-- ===== 3. FIRST CODE: the line becomes a line of code ===== -->
+        <g class="rose">
+          <rect x="340" y="66" width="90" height="56" rx="4" />
+          <path d="M340 76 H430" />
+          <circle cx="346" cy="71" r="1.2" />
+          <circle cx="351" cy="71" r="1.2" />
+          <path class="typing" style="--i: 0" d="M348 88 H384" />
+          <path class="typing" style="--i: 1" d="M356 110 H404" />
+          <path class="typing" style="--i: 2" d="M348 116 H372" />
+        </g>
+
+        <!-- ===== 4. TRAVEL: suitcase, flight over a globe, the sea, a swim ===== -->
+        <g class="teal">
+          <rect x="452" y="114" width="22" height="16" rx="2" />
+          <path d="M459 114 V110 H467 V114 M452 121 H474" />
+          <circle cx="570" cy="104" r="15" />
+          <ellipse class="globe-spin" cx="570" cy="104" rx="6" ry="15" />
+          <path d="M555 104 H585 M558 96 H582 M558 112 H582" />
+          <path class="cloud" d="M508 58 a5 5 0 0 1 9 -3 a6 6 0 0 1 11 2 a4 4 0 0 1 0 8 H510 a4 4 0 0 1 -2 -7 Z" />
+          <path class="cloud" style="animation-delay: -4s" d="M628 46 a5 5 0 0 1 9 -3 a6 6 0 0 1 11 2 a4 4 0 0 1 0 8 H630 a4 4 0 0 1 -2 -7 Z" />
+          <g clip-path="url(#sea-clip)">
+            <path class="sea" d="M470 132 q5 -4 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0" />
+            <path class="sea sea-slow" d="M470 138 q5 -4 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0" />
+          </g>
+          <g class="swimmer">
+            <circle cx="612" cy="128" r="2.5" />
+            <path class="swim-arm" d="M608 131 C608 122 616 120 621 126" />
+          </g>
+          <path id="flight" d="M480 130 C530 40 620 40 660 130" stroke="none" />
+          <path class="plane" d="M-6 -2 L5 0 L-6 2 L-4 0 Z">
+            <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#flight" />
+            </animateMotion>
+          </path>
+        </g>
+
+        <!-- ===== 5. DARMSTADT: Wedding Tower and a Brezel ===== -->
+        <g class="violet">
+          <path d="M684 130 V82 M700 130 V82 M684 82 a1.6 4 0 0 1 3.2 0 a1.6 4 0 0 1 3.2 0 a1.6 4 0 0 1 3.2 0 a1.6 4 0 0 1 3.2 0 a1.6 4 0 0 1 3.2 0 M690 104 H694 M690 116 H694" />
+          <circle cx="692" cy="92" r="2.5" />
+          <path d="M716 126 C708 118 712 106 722 108 C730 110 732 120 728 126 C724 120 726 110 734 108 C744 106 748 118 740 126 C734 132 722 132 716 126" />
+        </g>
+
+        <!-- ===== 6. HIKES: the line climbs the Odenwald hills ===== -->
+        <g class="violet">
+          <path class="flag" d="M830 80 V68 L840 71 L830 74" />
+          <path d="M846 130 V124 M840 124 L846 110 L852 124 Z M776 130 V124 M771 124 L776 113 L781 124 Z" />
+          <path id="trail" d="M750 130 L780 100 L800 115 L830 80" stroke="none" />
+          <circle class="hiker" r="2.2">
+            <animateMotion dur="6s" repeatCount="indefinite">
+              <mpath href="#trail" />
+            </animateMotion>
+          </circle>
+        </g>
+
+        <!-- ===== 7. FIRMWARE: a chip soldered onto the line ===== -->
+        <g class="teal">
+          <rect x="900" y="100" width="36" height="24" rx="3" />
+          <rect class="core" x="912" y="106" width="12" height="12" rx="1" />
+          <path d="M906 124 V130 M914 124 V130 M922 124 V130 M930 124 V130 M906 100 V94 M914 100 V94 M922 100 V94 M930 100 V94" />
+          <text class="bits" x="918" y="86">0110 1011</text>
+        </g>
+
+        <!-- ===== 8. ROBOTS & CHESS: the arm carries a knight to the board ===== -->
+        <g class="teal">
+          <path d="M955 130 H985 M960 130 V124 H980 V130" />
+          <g class="arm-upper">
+            <line x1="970" y1="124" x2="970" y2="94" />
+            <circle cx="970" cy="124" r="3" />
+            <g class="arm-lower">
+              <circle cx="970" cy="94" r="3" />
+              <line x1="970" y1="94" x2="994" y2="88" />
+              <path d="M994 88 L999 84 M994 88 L999 92" />
+              <g class="rose" transform="translate(992 92) scale(0.28)">
+                <path d="M10 56 H34 M13 50 C13 40 18 36 20 30 C14 32 8 30 6 26 L4 22 C10 16 14 10 22 6 L22 2 L26 6 C34 8 38 18 36 30 C35 40 32 44 31 50" />
+              </g>
+            </g>
+          </g>
+        </g>
+        <g class="rose board">
+          <rect x="994" y="118" width="6" height="6" />
+          <rect x="1006" y="118" width="6" height="6" />
+          <rect x="1000" y="124" width="6" height="6" />
+          <rect x="1012" y="124" width="6" height="6" />
+        </g>
+
+        <!-- ===== 9. CONTROL: the line settles on its target ===== -->
+        <g class="gold">
+          <path class="setpoint" d="M1030 86 H1150" />
+          <g class="moon" transform="translate(36 2)">
+            <path d="M1066 26 a9 9 0 1 0 8 13 a7 7 0 1 1 -8 -13 Z" />
+          </g>
+        </g>
+
+        <!-- ===== 10. NEXT STOP? ===== -->
+        <g class="coral pin">
+          <path d="M1160 86 C1152 76 1150 72 1150 68 A10 10 0 0 1 1170 68 C1170 72 1168 76 1160 86 Z" />
+          <circle cx="1160" cy="68" r="3" />
+        </g>
+
+        <!-- A person walks the whole life line, flying a kite: her dreams. -->
+        <!-- Her feet are at 0,0, so animateMotion keeps her standing on the line. -->
+        <g class="walker">
+          <circle class="halo" cx="0" cy="-8" r="7" />
+          <path class="kite-string" d="M3 -8 Q12 -26 18 -42" />
+          <g class="kite">
+            <path d="M18 -50 L23 -43 L18 -35 L13 -43 Z" />
+            <path d="M18 -35 q-3 4 0 7 t0 7" />
+          </g>
+          <circle cx="0" cy="-13.5" r="2.3" />
+          <path d="M0 -11 V-5 M0 -9 L3 -8 M0 -9 L-3 -6" />
+          <path class="leg leg-a" d="M0 -5 L-2 0" />
+          <path class="leg leg-b" d="M0 -5 L2 0" />
+          <animateMotion dur="22s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear">
+            <mpath href="#life-line" />
+          </animateMotion>
+        </g>
+      </svg>
+    </div>
+
+    <main class="page">
+      <!-- Hero: the first thing a visitor reads. -->
+      <!-- id="home" is the target of the Home link in the top bar. -->
+      <section class="hero" id="home">
+        <div class="hero-text">
+          <p class="eyebrow">ELECTRICAL ROOTS · SOFTWARE MIND · REAL HARDWARE</p>
+          <h1>Aishwarya Mohan</h1>
+          <!-- JavaScript changes only the highlighted ending. -->
+          <p class="role">
+            I build where
+            <span id="changing-focus">code meets hardware</span><span class="cursor">_</span>
+          </p>
+
+          <!-- EDIT: background, the work in Germany, and the focus. -->
+          <p class="intro">
+            Hello 👋, welcome to my little corner of the internet. I’m
+            Aishwarya, from Bengaluru and now in Germany, chasing my dreams and building a life around
+            curiosity, courage, and engineering. I started with electrical and
+            electronics, wandered through software testing and automation, and
+            kept getting pulled toward systems where logic, sensors, models, and
+            hardware have to work together. 
+          </p>
+
+          <!-- Two buttons. A link styled to look like a button. -->
+          <div class="hero-buttons">
+            <a class="button button-main" href="projects.html">Explore projects</a>
+
+            <a class="button" href="https://github.com/tech-believer">GitHub</a>
+            <a class="button" href="blog.html">Blog</a>
+          </div>
+        </div>
+
+        <!-- The animated rings connect the themes around the photo. -->
+        <!-- When you have a picture, save it as local/photo.jpg -->
+        <!-- and replace the line below with: <img src="photo.jpg" alt="Aishwarya Mohan"> -->
+        <div class="portrait-system">
+          <span class="orbit orbit-one" aria-hidden="true"></span>
+          <span class="orbit orbit-two" aria-hidden="true"></span>
+          <span class="orbit-label label-code">CODE</span>
+          <span class="orbit-label label-control">CONTROL</span>
+          <span class="orbit-label label-hardware">HARDWARE</span>
+          <div class="photo">Your photo</div>
+        </div>
+      </section>
+
+      <!-- Studies, work, and tools. Written as short notes, not a CV. -->
+      <section class="story" id="studies">
+        <h2>Studies</h2>
+        <!-- A short story: where I come from, then where I am now. -->
+        <p>
+          I grew up in Bengaluru and studied at <strong>Sri Vani</strong> and
+          <strong>KLE</strong>, where science, sports, and cultural activities
+          were all part of how I learned. That foundation led me to Electrical
+          and Electronics Engineering at <strong>VTU</strong>, where I started
+          connecting circuits, power, and software. Moving to Germany for my
+          Master’s in Electrical Engineering and Information Technology at
+          <strong>Hochschule Darmstadt</strong> made the direction clearer:
+          control systems, embedded software, and real hardware are the space I
+          want to grow in.
+        </p>
+      </section>
+
+      <section class="story" id="work">
+        <h2>Work</h2>
+        <p>
+          During my Bachelor’s, I first explored <em>machine learning</em>
+          through an internship at <strong>DJI</strong>, where I built a
+          PyTorch model for flight delay classification. In my final semesters,
+          I also started as a trainee at <strong>Cognizant</strong>, writing
+          automated tests for web applications and learning how software is
+          checked before it reaches users.
+        </p>
+        <p>
+          During my Master’s in Germany, the work became more connected to
+          systems. At <strong>Panasonic Automotive</strong> I worked on system
+          testing and also built <em>GenAI and RAG</em> prototypes for
+          requirement processing. At <strong>Bosch</strong> I worked on control
+          engineering, measurement data, a state-space model, C++ on STM32, and
+          <em>CNN-based</em> image processing. At
+          <strong>Neura Robotics</strong> I write C++ and ROS2 software so a
+          robot hand can be commanded, read back, and brought up on real
+          hardware.
+        </p>
+        <p>
+          This is the direction I want to grow in: <em>embedded systems</em>, <em>control engineering</em>,
+          <em>machine learning</em>,  <em>AI technologies</em> and <em>robotics</em>.
+        </p>
+      </section>
+
+      <section class="story" id="tools">
+        <h2>Tools and technologies</h2>
+        <p>
+          Day to day I write in C, C++, and Python. Models live in MATLAB and
+          Simulink. On the board I use STM32 tools, and around the robot I use
+          ROS 2, CMake, Git, and Docker. The comms include CAN, SPI, I2C,
+          serial, and Modbus. I also use Arduino, Raspberry Pi, and Selenium,
+          and for AI work I use PyTorch, Hugging Face models, and RAG
+          pipelines built with n8n.
+        </p>
+        <!-- Small labels under the paragraph, so the tools are easy to scan. -->
+        <ul class="chips">
+          <li>C</li>
+          <li>C++</li>
+          <li>Python</li>
+          <li>MATLAB</li>
+          <li>Simulink</li>
+          <li>STM32</li>
+          <li>ROS 2</li>
+          <li>Git</li>
+          <li>Docker</li>
+          <li>CMake</li>
+          <li>Linux</li>
+          <li>CAN</li>
+          <li>SPI</li>
+          <li>Modbus</li>
+          <li>Arduino</li>
+          <li>Raspberry Pi</li>
+          <li>Selenium</li>
+          <li>PyTorch</li>
+          <li>GenAI / RAG</li>
+          <li>n8n agents</li>
+        </ul>
+      </section>
+    </main>
+    <!-- A tiny script changes the highlighted engineering theme. -->
+    <script src="script.js?v=scroll-repeat"></script>
+  </body>
+</html>

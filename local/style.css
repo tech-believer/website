@@ -63,12 +63,16 @@ body::after {
   margin: 0 auto;
   /* 40px keeps a small edge, so the drawing fills the laptop. */
   padding: 0 24px;
+  height: clamp(56px, 6vw, 78px);
+  overflow: hidden;
 }
 
 .roof-art {
   display: block;
   width: 100%;
   height: auto;
+  transform: scaleY(0.35);
+  transform-origin: top center;
   fill: none;
   stroke: var(--cream);
   stroke-width: 1.1;
@@ -1009,6 +1013,12 @@ body::after {
   *,
   *::before {
     animation: none !important;
+    transition: none !important;
+  }
+
+  .story.story-animate {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -1336,6 +1346,124 @@ h1 {
   color: var(--muted);
   font-size: 20px;
   line-height: 1.7;
+}
+
+/* Studies, work, and tools use full-width panels, so the page does not feel empty. */
+.story {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 48px;
+  padding: 24px;
+  border-left: 2px solid var(--gold);
+  background: linear-gradient(135deg, rgba(54, 39, 18, 0.42), rgba(40, 34, 53, 0.36));
+  backdrop-filter: blur(8px);
+}
+
+/* Added by JavaScript before the scroll animation starts. */
+.story.story-animate {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Added by JavaScript when the section reaches the screen. */
+.story.story-animate.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Soft colour on the right fills the panel without adding more text. */
+.story::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  top: -80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 168, 74, 0.22), transparent 68%);
+}
+
+.story > * {
+  position: relative;
+  z-index: 1;
+}
+
+.story h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.story p {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.story p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* The first line of a section: bigger and brighter. */
+.story .lead {
+  color: var(--cream);
+  font-size: 22px;
+}
+
+/* Company and institution names stand out in gold. */
+.story strong {
+  color: var(--gold);
+  font-weight: normal;
+}
+
+/* AI and ML words are italic, not a separate colour. */
+.story em {
+  color: inherit;
+  font-style: italic;
+}
+
+/* A boxed block with a teal line on the left, for the AI part. */
+.highlight {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--teal);
+  background: rgba(85, 214, 194, 0.08);
+}
+
+.highlight h3 {
+  margin: 0 0 8px;
+  color: var(--teal);
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.highlight strong {
+  color: var(--teal);
+}
+
+/* Tool names as small labels. The list has no bullets. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--cream);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
 }
 
 /* Place the three topics side by side on a wide screen. */

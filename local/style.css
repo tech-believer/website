@@ -21,6 +21,74 @@ body {
   font-family: Georgia, "Times New Roman", serif;
 }
 
+/* Soft coloured glows behind the whole page. */
+body::before {
+  content: "";
+  position: fixed;          /* stays still while the page scrolls */
+  inset: -20%;              /* a bit bigger than the screen, so movement has room */
+  z-index: -1;              /* sits behind all the text */
+  background:
+    radial-gradient(circle at 20% 25%, rgba(224, 168, 74, 0.28), transparent 35%),  /* gold */
+    radial-gradient(circle at 80% 20%, rgba(64, 160, 170, 0.25), transparent 35%),  /* teal */
+    radial-gradient(circle at 65% 80%, rgba(170, 90, 140, 0.22), transparent 40%),  /* rose */
+    radial-gradient(circle at 15% 85%, rgba(90, 110, 200, 0.20), transparent 35%);  /* blue */
+  animation: drift 10s ease-in-out infinite alternate;
+}
+
+/* Move and turn the glows, then go back (alternate). */
+@keyframes drift {
+  from {
+    transform: translate(-6%, 4%) rotate(-10deg) scale(1);
+  }
+  to {
+    transform: translate(6%, -4%) rotate(10deg) scale(1.15);
+  }
+}
+
+/* Text slides up and fades in when the page opens. */
+.hero-text {
+  animation: rise 0.9s ease-out backwards;
+}
+
+/* Cards come in a little later, one after another. */
+.topics article {
+  /* "backwards" hides cards during the delay but frees them for hover after. */
+  animation: rise 0.9s ease-out backwards;
+}
+
+.topics article:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.topics article:nth-child(2) {
+  animation-delay: 0.45s;
+}
+
+.topics article:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Start 24px lower and invisible, end in place and visible. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* No movement for people who turned off animations on their device. */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .hero-text,
+  .topics article {
+    animation: none;
+  }
+}
+
 /* Top bar uses the same width as the page below it. */
 .nav {
   display: flex;
@@ -72,7 +140,8 @@ body {
   justify-content: center;
   border-radius: 50%;
   overflow: hidden;
-  background: var(--panel);
+  /* Gold-to-teal fill until a real photo is added. */
+  background: linear-gradient(135deg, rgba(224, 168, 74, 0.35), rgba(64, 160, 170, 0.35));
   color: var(--muted);
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -153,10 +222,19 @@ h1 {
   margin-top: 64px;
 }
 
+/* See-through cards so the colours show behind them. */
 article {
-  background: var(--panel);
+  background: rgba(54, 39, 18, 0.55);
+  backdrop-filter: blur(8px);
   border-top: 2px solid var(--gold);
   padding: 16px;
+  transition: transform 0.25s, box-shadow 0.25s; /* smooth hover change */
+}
+
+/* Card lifts up with a gold glow when the mouse is over it. */
+article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(224, 168, 74, 0.25);
 }
 
 h2 {

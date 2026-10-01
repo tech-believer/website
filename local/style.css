@@ -1031,7 +1031,8 @@ body::after {
   text-decoration: none;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.nav-here {
   color: var(--gold);
 }
 
@@ -1256,6 +1257,58 @@ h1 {
   50% {
     opacity: 0;
   }
+}
+
+/* Contact form. One field under the next. */
+.contact-line {
+  font-family: Arial, sans-serif;
+}
+
+.contact-line a {
+  color: var(--gold);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+  margin-top: 28px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(17, 20, 29, 0.5);
+  color: var(--cream);
+  font: inherit;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+/* Sits under the form, apart from the fields. */
+.find-me {
+  margin-top: 48px;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.find-me a {
+  color: var(--gold);
 }
 
 .intro {

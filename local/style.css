@@ -60,9 +60,9 @@ body::after {
 .roof {
   position: relative;
   z-index: 1;
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 6vw;
+  /* 40px keeps a small edge, so the drawing fills the laptop. */
+  padding: 0 40px;
 }
 
 .roof-art {
@@ -1019,10 +1019,8 @@ body::after {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  max-width: 1440px;
   margin: 0 auto;
-  /* 6vw means 6% of the screen width, so big screens get more side space. */
-  padding: 24px 6vw;
+  padding: 24px 40px;
   border-bottom: 1px solid var(--line);
   font-family: Arial, sans-serif;
 }
@@ -1054,6 +1052,7 @@ body::after {
 
 .hero-text {
   flex: 1;
+  min-width: 0; /* lets the text wrap instead of pushing the photo off screen */
 }
 
 .eyebrow {
@@ -1066,9 +1065,10 @@ body::after {
 /* The two rings turn in opposite directions around the portrait. */
 .portrait-system {
   position: relative;
-  width: 390px;
-  height: 390px;
-  flex: 0 0 390px;
+  /* Shrinks on a smaller laptop so it stays beside the text. */
+  width: min(390px, 34vw);
+  height: min(390px, 34vw);
+  flex: 0 1 auto;
   display: grid;
   place-items: center;
 }
@@ -1135,7 +1135,7 @@ body::after {
 
 .label-control {
   top: 47%;
-  right: -25px;
+  right: 0; /* stays inside the page, not past the screen edge */
 }
 
 .label-hardware {
@@ -1145,8 +1145,8 @@ body::after {
 
 /* Round photo frame. Same width and height make a perfect circle. */
 .photo {
-  width: 285px;
-  height: 285px;
+  width: 72%;
+  height: 72%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1175,9 +1175,8 @@ body::after {
 .page {
   position: relative;
   z-index: 1;
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 6vw 96px;
+  padding: 40px 40px 96px;
 }
 
 /* Row that holds the two buttons. */

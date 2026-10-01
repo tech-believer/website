@@ -54,6 +54,224 @@ body::after {
   mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
+/* Roof: the story drawing across the top of the page. */
+.roof {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 6vw 0;
+}
+
+.roof-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Small words under each step. */
+.roof-art .label {
+  fill: var(--cream);
+  stroke: none;
+  font: 9px Arial, sans-serif;
+  letter-spacing: 0.3em;
+  text-anchor: middle;
+  opacity: 0.7;
+}
+
+/* Letters inside the model blocks: C = controller, P = plant. */
+.roof-art .tag {
+  fill: var(--teal);
+  stroke: none;
+  font: 11px Georgia, serif;
+  text-anchor: middle;
+}
+
+/* The full 10 s story repeats forever. */
+/* Each step is dim, then bright when the spark arrives, then dim again. */
+.stage {
+  opacity: 0.3;
+  animation: stage-on 10s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes stage-on {
+  0%,
+  32%,
+  100% {
+    opacity: 0.3;
+  }
+  6%,
+  22% {
+    opacity: 1;
+  }
+}
+
+/* Lines draw themselves. pathLength="1" in the HTML makes every line */
+/* length 1, so one dash of size 1 can show or hide the whole line. */
+.draw {
+  stroke-dasharray: 1;
+  animation: draw 10s ease-in-out infinite;
+  /* --i (if set) types the code lines one after another. */
+  animation-delay: calc(var(--d) + var(--i, 0) * 0.15s);
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1;     /* hidden */
+  }
+  12%,
+  88% {
+    stroke-dashoffset: 0;     /* fully drawn */
+  }
+  100% {
+    stroke-dashoffset: -1;    /* rubbed out, ready to draw again */
+  }
+}
+
+/* Bits float up into the chip and fade. */
+.bits {
+  fill: var(--gold);
+  stroke: none;
+  font: 9px monospace;
+  letter-spacing: 0.2em;
+  text-anchor: middle;
+  opacity: 0;
+  animation: bits 10s ease-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes bits {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  8% {
+    opacity: 1;
+  }
+  20%,
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* The chip core fills with gold once it is "flashed". */
+.core {
+  fill: var(--gold);
+  fill-opacity: 0.1;
+  stroke: var(--gold);
+  animation: core 10s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes core {
+  0%,
+  100% {
+    fill-opacity: 0.1;
+  }
+  15%,
+  70% {
+    fill-opacity: 0.7;
+  }
+}
+
+/* Robot arm: each joint turns around its own pin. */
+/* transform-box: view-box lets us give the pin in drawing units. */
+.arm-upper,
+.arm-lower {
+  transform-box: view-box;
+  animation: arm 5s ease-in-out infinite alternate;
+}
+
+.arm-upper {
+  transform-origin: 840px 104px;
+}
+
+.arm-lower {
+  transform-origin: 840px 64px;
+  animation-name: forearm;
+  animation-duration: 3.5s;
+}
+
+@keyframes arm {
+  from {
+    rotate: -18deg;
+  }
+  to {
+    rotate: 14deg;
+  }
+}
+
+@keyframes forearm {
+  from {
+    rotate: 28deg;
+  }
+  to {
+    rotate: -24deg;
+  }
+}
+
+/* Measured curve in gold; target line dashed. */
+.response {
+  stroke: var(--gold);
+}
+
+.setpoint {
+  stroke: var(--cream);
+  stroke-dasharray: 3 4;
+  opacity: 0.4;
+}
+
+/* Feedback loop: dashes keep flowing from MEASURE back to MODEL. */
+.loop {
+  stroke: var(--coral);
+  stroke-dasharray: 2 6;
+  opacity: 0.45;
+  animation: loop-flow 1.6s linear infinite;
+}
+
+@keyframes loop-flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+/* The production line itself. */
+.trace {
+  stroke: var(--cream);
+  opacity: 0.25;
+}
+
+/* The spark runs left to right once every 10 s. */
+.spark {
+  fill: var(--cream);
+  stroke: none;
+  filter: drop-shadow(0 0 6px var(--teal)) drop-shadow(0 0 12px var(--teal));
+  transform-box: view-box;
+  animation: spark 10s linear infinite;
+}
+
+@keyframes spark {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1160px);
+    opacity: 0;
+  }
+}
+
 /* Three animated paths suggest electrical signals moving through a system. */
 .signal-field {
   position: fixed;
@@ -171,6 +389,14 @@ body::after {
   .signal,
   .orbit,
   .cursor,
+  .stage,
+  .draw,
+  .bits,
+  .core,
+  .arm-upper,
+  .arm-lower,
+  .loop,
+  .spark,
   .hero-text,
   .topics article {
     animation: none;
@@ -189,8 +415,6 @@ body::after {
   /* 6vw means 6% of the screen width, so big screens get more side space. */
   padding: 24px 6vw;
   border-bottom: 1px solid var(--line);
-  background: rgba(17, 20, 29, 0.35);
-  backdrop-filter: blur(14px);
   font-family: Arial, sans-serif;
 }
 
@@ -344,7 +568,7 @@ body::after {
   z-index: 1;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 96px 6vw 96px;
+  padding: 40px 6vw 96px;
 }
 
 /* Row that holds the two buttons. */
@@ -538,5 +762,14 @@ article p {
 
   .topics {
     grid-template-columns: 1fr;
+  }
+
+  /* On a phone the drawing is small, so hide the words under it. */
+  .roof {
+    padding: 8px 12px 0;
+  }
+
+  .roof-art .label {
+    display: none;
   }
 }

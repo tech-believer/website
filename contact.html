@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Contact page. The form is a template. It does not send mail yet. -->
+<!-- Contact page. The form sends messages through Formspree. -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,17 +28,18 @@
 
       <!-- Each field has a label so the visitor knows what to type. -->
       <form class="contact-form" action="https://formspree.io/f/xjykdjbe" method="post">
+        <input type="hidden" name="_subject" value="New message from Aishwarya's website" />
         <label>
           Name
-          <input type="text" name="name" />
+          <input type="text" name="name" required />
         </label>
         <label>
           Email
-          <input type="email" name="email" />
+          <input type="email" name="email" required />
         </label>
         <label>
           Message
-          <textarea name="message" rows="5"></textarea>
+          <textarea name="message" rows="5" required></textarea>
         </label>
         <!-- Formspree sends this message to my email. -->
         <button class="button button-main" type="submit">Send</button>

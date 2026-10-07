@@ -1129,33 +1129,6 @@ body::after {
   }
 }
 
-.orbit-label {
-  position: absolute;
-  z-index: 2;
-  padding: 5px 9px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: rgba(17, 20, 29, 0.78);
-  color: var(--cream);
-  font: 10px Arial, sans-serif;
-  letter-spacing: 0.15em;
-}
-
-.label-code {
-  top: 3px;
-  left: 25%;
-}
-
-.label-control {
-  top: 47%;
-  right: 0; /* stays inside the page, not past the screen edge */
-}
-
-.label-hardware {
-  bottom: 10px;
-  left: 8%;
-}
-
 /* Round photo frame. Same width and height make a perfect circle. */
 .photo {
   width: 72%;
@@ -1559,10 +1532,6 @@ article p {
     height: 280px;
     flex-basis: 280px;
     align-self: center;
-  }
-
-  .label-control {
-    right: -8px;
   }
 
   /* On a phone, put the photo under the text. */
